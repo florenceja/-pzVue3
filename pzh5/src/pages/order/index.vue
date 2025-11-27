@@ -11,7 +11,7 @@
       <van-tab title="已取消" name="4"/>
     </van-tabs>
 
-    <van-row v-for="(item, index) in listData" :key="item.out_trade_no">
+    <van-row v-for="item in listData" :key="item.out_trade_no" @click="goDetail(item)">
       <van-col span="5">
         <van-image width="50" height="50" :src="item.serviceImg"></van-image>
       </van-col>
@@ -22,7 +22,7 @@
       </van-col>
       <van-col span="5" :style="{ color: colorMap[item.trade_state]}">
         {{ item.trade_state }}
-        <counter v-if="item.trade_state === '待支付'"/>
+        <counter v-if="item.trade_state === '待支付'" :second="item.timer"/>
       </van-col>
 
     </van-row>
@@ -33,6 +33,9 @@
 <script setup>
 import { ref, getCurrentInstance, onMounted, reactive } from 'vue'
 import couter from '../../components/counter.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 const { proxy } = getCurrentInstance()
 
 const activeName = ref("")
@@ -63,6 +66,11 @@ const colorMap = {
   '待支付': '#ffa200',
   '待服务': '#1da6fd',
   '已完成': '#21c521'
+}
+
+//点击跳转详情页
+const goDetail = (item) => {
+  router.push(`/detail?oid=${item.out_trade_no}`)
 }
 </script>
 

@@ -3,8 +3,7 @@ import './style.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import panelHead from './components/panelHead.vue'
-// main.ts
+
 router.beforeEach((to, from) => {
   const token = localStorage.getItem('pz_token')
   if(!token && to.path !== '/login'){
