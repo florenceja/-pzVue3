@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+
         <div class="btns">
             <el-button  size="small" :icon="Plus" type="primary" @click="open(null)">新增</el-button>
             <el-popconfirm 
@@ -13,6 +14,7 @@
                 </template>
             </el-popconfirm>
         </div>
+
         <el-table :data="tableData.list" style="width: 100%" @selection-change="handleSelectionChange">
             <el-table-column type="selection" :selectable="selectable" width="55" />
             <el-table-column prop="id" label="id" />
@@ -47,6 +49,7 @@
                 </template>
             </el-table-column>
         </el-table>
+        
         <div class="pagination-info">
             <el-pagination 
                 :currentPage="paginationData.pageNum" 

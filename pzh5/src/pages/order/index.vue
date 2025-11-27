@@ -32,7 +32,7 @@
 
 <script setup>
 import { ref, getCurrentInstance, onMounted, reactive } from 'vue'
-import couter from '../../components/counter.vue'
+import counter from '../../components/counter.vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
